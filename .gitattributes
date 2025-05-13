@@ -1,0 +1,2 @@
+*.pkg !text !filter !merge !diff
+*.exe !text !filter !merge !diff
