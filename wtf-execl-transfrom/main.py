@@ -37,7 +37,6 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
 
-
         # 绑定事件 fight import
         self.fightImport.clicked.connect(self.openfile)
 
@@ -54,7 +53,7 @@ class Ui_MainWindow(QtWidgets.QMainWindow):
 
 
     def openfile(self):
-        openfile_name QFileDialog.getOpenFileName(self,'选择文件','','Excel files(*.xlsx , *.xls)')
+        openfile_name = QFileDialog.getOpenFileName(self,'选择文件','','Excel files(*.xlsx , *.xls)')
         list =[]
         list.append(openfile_name[0])
         # sheet = import_sheet(list[0])

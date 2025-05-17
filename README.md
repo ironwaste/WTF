@@ -9,6 +9,10 @@ the format translate about  taekwondo compition
 
 
 
+任务记录 ：2025-5-17 将竞技对战表 除时间部分将所有的都已经进行完成。需增加 日历选择的和根据场地号判断当前的比赛日期。
+
+
+
 ## 竞技对战表 转换 前台表
 
 ### 输入格式
@@ -44,6 +48,10 @@ the format translate about  taekwondo compition
 ![fight-input3](/markdown-img/fight-input3.png)
 
 
+
+#### 竞技标准输入格式 : 
+
+![fight-output](/markdown-img/竞技标准输入对阵表.jpg)
 
 
 
