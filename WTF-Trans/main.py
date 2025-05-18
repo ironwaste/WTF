@@ -3,16 +3,12 @@ import face
 import fighttrans
 import sys
 import pandas as pd
-from PyQt5.QtCore import QLibraryInfo
 from PyQt5.QtWidgets import *
-from PyQt5.QtCore import *
-from PyQt5.QtCore import QUrl
 from PyQt5.QtGui import *
-from PyQt5.QtGui import QDesktopServices
 from PyQt5.QtWidgets import QTableWidgetItem, QFileDialog, QMessageBox
-from PyQt5.QtCore import Qt
+from PyQt5.QtCore import Qt, QDate
 import numpy as np
-
+import time
 
 class T(face.Ui_widget,QtWidgets.QWidget) :
     def __init__(self) :
@@ -20,19 +16,28 @@ class T(face.Ui_widget,QtWidgets.QWidget) :
         self.setupUi(self)
         self.start_label()
 
+        # 将日历设置为当前日期
+        ## 获取当前时间
+        year = (int)(time.strftime("%Y"))
+        month = (int)(time.strftime("%m"))
+        day = (int)(time.strftime("%d"))
+        date = QDate(year, month, day)
+        self.calendarWidget.setSelectedDate(date)
+        # 结束
+
         self.fight_import_button.clicked.connect(self.get_openfile_path)
         self.poomsae_import_button.clicked.connect(self.get_openfile_path)
         self.poomsae_import_button_2.clicked.connect(self.get_openfile_path)
         self.fight_output_buttom.clicked.connect(self.trans_fight)
 
-    def getDate(self):
-    # 日历 日期获取
-        self.start_date =
-
+    def getDate(self) :
+        # calendarWidget to get selected date and to 判断场次为赛事第几天从而得到最后日期
+        self.selectDate = self.calendarWidget.selectedDate().toString("yyyy-MM-dd")
+        # print(self.selectDate)
 
     def trans_fight(self) :
-        date = 0
-        self.df_out_fight = fighttrans.get_tabelview_fight(self.model,date)
+        self.getDate()
+        self.df_out_fight = fighttrans.get_tabelview_fight(self.model,self.selectDate)
         # print(self.df_out_fight)
         # print(self.df_out_fight.head())
         self.df_out_fight.to_excel('output.xlsx',index=False)
@@ -76,7 +81,7 @@ class T(face.Ui_widget,QtWidgets.QWidget) :
 
             self.event_name,self.df = self.data_pretreat(tmp_df)
             # 数据预处理 将赛事名称 和 内容分离
-            print(self.df)
+            # print(self.df)
             self.init_tabel_view()
 
 
