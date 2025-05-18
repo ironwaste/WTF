@@ -4,6 +4,17 @@ from PyQt5.QtWidgets import QApplication, QTableView
 from PyQt5.QtCore import Qt
 import pandas as pd
 import numpy as np
+import datetime
+
+# date_str = "2025-5-18"
+#
+#
+# # ttributeError: module 'datetime' has no attribute 'strptime' 错误，
+# # 通常是因为错误地调用了 datetime 模块中的方法。
+# # strptime 方法属于 datetime 类（datetime 模块中的一个子类）
+# # 而非直接属于 datetime 模块本身。
+# dt = datetime.datetime.strptime("2025-5-18","%Y-%m-%d")
+# print(dt)
 
 
 # list = [1,2,3,4,4,5]
