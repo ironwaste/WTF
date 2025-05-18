@@ -25,6 +25,10 @@ class T(face.Ui_widget,QtWidgets.QWidget) :
         self.poomsae_import_button_2.clicked.connect(self.get_openfile_path)
         self.fight_output_buttom.clicked.connect(self.trans_fight)
 
+    def getDate(self):
+    # 日历 日期获取
+        self.start_date =
+
 
     def trans_fight(self) :
         date = 0
