@@ -1,6 +1,8 @@
-from PyQt5 import QtCore, QtGui, QtWidgets
 import face
 import fighttrans
+
+
+from PyQt5 import QtCore, QtGui, QtWidgets
 import sys
 import pandas as pd
 from PyQt5.QtWidgets import *
@@ -71,7 +73,6 @@ class T(face.Ui_widget,QtWidgets.QWidget) :
     def get_openfile_path(self) :  # 文件选择
         openfile_name = QFileDialog.getOpenFileName(self, '选择文件', '', 'Excel files(*.xlsx , *.xls)')
         self.filename = openfile_name[0]
-
         if self.filename == '' : # 如果未选择文件，则显示重新选择
             self.my_label("文件未被选择，请重新选择")
         else : # 否则将显示 文件内容
@@ -85,9 +86,7 @@ class T(face.Ui_widget,QtWidgets.QWidget) :
             self.init_tabel_view()
 
 
-
     def data_pretreat(self,df): # 将赛事名称 和 内容和数据进行分离
-
         df = df.replace(np.nan,'')
         df.columns = df.loc[0]
         name = df.columns.tolist()[0]
