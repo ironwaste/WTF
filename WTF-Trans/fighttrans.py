@@ -17,24 +17,19 @@ def trans_changci(changci) :
 # 转换场次号 和 场地
     s = str(changci)
     num = (int)(s[1]) - 1
+    # print(num)
     return s[0],s[1:5],num # 将 A1001 拆分为 A 和 1001 两种  还有 场次号的第一位
     # 并且再增加一位用于判断当前场次，为赛事的第几天 第一天以0开始，0，1，2，3 形式表示。
 
 
 
-#2024-01-01
 def trans_date(date,tianshu) :
-# 未完成，不知道 calendarywidget 最后所获取的 日期的格式 是什么样子的
 # https://blog.csdn.net/webcai_3/article/details/147158557 参考链接
-#     print("date : " + date)
     dt = datetime.datetime.strptime(date,"%Y-%m-%d")
     delta = datetime.timedelta(days=tianshu)
     dt = dt + delta
     date = dt.strftime("%Y-%m-%d")
     return date
-
-
-
 
 def get_tabelview_fight( model, date ):
     # 获取行列数量
@@ -42,6 +37,7 @@ def get_tabelview_fight( model, date ):
     cols = model.columnCount()
 
     # 提取列名（水平表头）
+    # 比赛序号、‘空’、轮次、场地、场地号、级别、个人团体、日期、青方姓名、
     columns = ['bisaixuhao','zonglunci','lunci','changdi','chngdiho','jibie',
                'gerentuanti','riqi','qingfangbianhao','qingfangxinming',
                'qingfangdanwei','hongfangbianhao','hongfangxinming',
@@ -52,10 +48,11 @@ def get_tabelview_fight( model, date ):
     for row in range(rows):
 
         row_data = [str(cnt),'','','','','','个人','','','','','','','']
+        #
         cnt += 1
         for col in range(cols) :
             item = model.item(row, col)
-            if col == 0 :
+            if col == 0 : # 判断场地
                 changdi,changdihao,tianshu = trans_changci(str(item.text()))
                 row_data[3] = changdi
                 row_data[4] = str(changdihao)
