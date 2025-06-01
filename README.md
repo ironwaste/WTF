@@ -53,13 +53,13 @@ the format translate about  taekwondo compition
 
 ### 输入格式
 
-![poomase_input](.\source\poomase_input.jpg)
+![poomase_input](/source/poomase_input.jpg)
 
 
 
 ### 输出格式
 
-![poomase](.\source\poomase_output.png)
+![poomase](/source/poomase_output.png)
 
 | columns |     bisaixuhao     |   riqi   | **changdi** | **changdi** | **cixu** | **xingming** | **xingbie** | **fenlei** | **danwei** | **zubie** |   **jibie**   | **lunci** | **jingsixingmu1** |
 | ------- | :----------------: | :------: | :---------: | :---------: | :------: | :----------: | :---------: | :--------: | :--------: | :-------: | :-----------: | :-------: | :---------------: |
