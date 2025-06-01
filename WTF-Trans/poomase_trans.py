@@ -36,7 +36,7 @@ def get_tableview_poomase(model , date):
     # 性别（6）、分类（7）、单位（8）、组别（为空）（9）、级别（10），
     # 轮次（11）先为手动，因为不好判断轮次个数
     for row in range(rows) :
-        row_data = [str(cnt),'','','','','','','','','','','','']
+        row_data = [str(cnt),'','','','','','','','','','','1','']
         cnt += 1
         for col in range(cols) :
             item = model.item(row,col)
