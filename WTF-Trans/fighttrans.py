@@ -10,6 +10,8 @@ def trans_num(lunci) :
     for i in range(2,n) : # 转换 1/ 之后的所有数字 有可能是两位或者多位数字的情况
         out += s[i]
     if s[0] != '1' :
+        # 由于除了决赛是 final 字符串，其余都是分数格式且 分子为 1
+        # 所以判断第一个值是为为一即可
         out = "c1"
     return str(out)  # 输出为 c + 数字 的文本格式
 
