@@ -11,8 +11,8 @@ from PyQt5.QtWidgets import QTableWidgetItem, QFileDialog, QMessageBox
 from PyQt5.QtCore import Qt, QDate
 import numpy as np
 import time
+import warnings
 import xlsxwriter
-
 class T(face.Ui_widget,QtWidgets.QWidget) :
     def __init__(self) :
         super().__init__()
@@ -37,6 +37,8 @@ class T(face.Ui_widget,QtWidgets.QWidget) :
         self.poomsae_output_button.clicked.connect(self.trans_poomsae)
 
     def trans_poomsae(self):
+
+        self.my_label("开始处理品势数据...")
         self.getDate()
         self.df_out_poomase = poomase_trans.get_tableview_poomase(self.model,self.selectDate)
         self.df_out_poomase['riqi'] = pd.to_datetime(self.df_out_poomase['riqi']).dt.date
@@ -50,7 +52,7 @@ class T(face.Ui_widget,QtWidgets.QWidget) :
             worksheet = writer.sheets[self.event_name]
 
             # 定义 yyyy/m/d 日期格式
-            date_format = workbook.add_format({'date_format': 14})
+            date_format = workbook.add_format({'num_format': 14})
 
             # 设置日期列的格式（根据列索引）
             # 假设日期列为：order_date (C列), delivery_date (D列), timestamp (E列), mixed_date (F列)
@@ -72,13 +74,6 @@ class T(face.Ui_widget,QtWidgets.QWidget) :
         self.df_out_fight.to_excel(f'{self.out_filename}.xlsx',index=False,sheet_name=self.event_name)
         self.my_label("修改完成！")
 
-
-    def format_date(date):
-        # 用于品势日期转换
-        """将日期格式化为 yyyy/m/d 字符串"""
-        if pd.isna(date):
-            return ""
-        return f"{date.year}/{date.month}/{date.day}"
 
     def get_openfile_path(self) :  # 文件选择
         openfile_name = QFileDialog.getOpenFileName(self, '选择文件', '', 'Excel files(*.xlsx , *.xls)')
@@ -132,6 +127,9 @@ class T(face.Ui_widget,QtWidgets.QWidget) :
 
 
 if __name__ == '__main__' :
+    warnings.filterwarnings('ignore', category=UserWarning, module='openpyxl')
+    # 用于忽略UserWarning: Cannot parse header or footer so it will be ignored
+    #   warn("""Cannot parse header or footer so it will be ignored""")
     app = QtWidgets.QApplication(sys.argv)
     win = T()
     win.show()
