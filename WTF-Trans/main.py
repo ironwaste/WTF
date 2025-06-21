@@ -1,5 +1,5 @@
-import face
-import fighttrans
+import test_face as face
+import fight_trans as fighttrans
 import poomase_trans
 
 from PyQt5 import QtCore, QtGui, QtWidgets
@@ -12,7 +12,8 @@ from PyQt5.QtCore import Qt, QDate
 import numpy as np
 import time
 import warnings
-import xlsxwriter
+
+
 class T(face.Ui_widget,QtWidgets.QWidget) :
     def __init__(self) :
         super().__init__()

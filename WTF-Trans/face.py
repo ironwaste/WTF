@@ -21,9 +21,16 @@ class Ui_widget(object):
         font.setPointSize(18)
         widget.setFont(font)
         widget.setContextMenuPolicy(QtCore.Qt.ActionsContextMenu)
+
+        # 布局方面
+        self.horizontalLayoutWidget = QtWidgets.QWidget(widget)
+
+
+
         self.tableView = QtWidgets.QTableView(widget)
         self.tableView.setGeometry(QtCore.QRect(470, 20, 811, 891))
         self.tableView.setObjectName("tableView")
+
         self.fight_import_button = QtWidgets.QPushButton(widget)
         self.fight_import_button.setGeometry(QtCore.QRect(20, 100, 191, 51))
         self.fight_import_button.setObjectName("fight_import_button")
@@ -32,6 +39,7 @@ class Ui_widget(object):
         font = QtGui.QFont()
         font.setFamily("Agency FB")
         font.setPointSize(20)
+
         self.label1.setFont(font)
         self.label1.setObjectName("label1")
         self.fight_output_buttom = QtWidgets.QPushButton(widget)
@@ -78,9 +86,9 @@ class Ui_widget(object):
         _translate = QtCore.QCoreApplication.translate
         widget.setWindowTitle(_translate("widget", "跆拳道对阵表转换"))
         self.fight_import_button.setText(_translate("widget", "导入竞技对战表"))
-        self.label1.setText(_translate("widget", "结果显示："))
         self.fight_output_buttom.setText(_translate("widget", "导出竞技前台表"))
         self.poomsae_import_button.setText(_translate("widget", "导入品势对战表"))
         self.poomsae_output_button.setText(_translate("widget", "导出品势前台表"))
         self.poomsae_import_button_2.setText(_translate("widget", "导入品势成绩"))
         self.poomsae_output_button_2.setText(_translate("widget", "导出品势成绩册"))
+        self.label1.setText(_translate("widget", "结果显示："))
